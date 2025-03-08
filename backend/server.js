@@ -36,7 +36,7 @@ const GOOGLE_MAPS_API_KEY = process.env.GMAPS_API_KEY;
 const BUS_API_URL = "https://busapi.amithv.xyz/api/v1/schedules";
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"; // Updated URL
-const PORT = process.env.CHATBOT_PORT || 4000;
+const PORT = process.env.CHATBOT_PORT || 5000;
 
 
 // Chatbot function

@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800;
+}
+
+.btn-primary {
+  @apply px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 
+         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+         transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply px-6 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 
+         focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 
+         transition-colors duration-200;
+}
+
+.input-primary {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-md 
+         focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
+         transition-colors duration-200;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-sm p-6;
+}
+
+/* Add smooth transitions */
