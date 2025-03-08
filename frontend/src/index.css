@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* <<<<<<< HEAD */
 
 html {
   scroll-behavior: smooth;
@@ -33,3 +34,5 @@ html {
 }
 
 /* Add smooth transitions */
+/* ======= */
+/* >>>>>>> 583a5965eaf0bbae1d14d63c42231a6ccfc183c6 */

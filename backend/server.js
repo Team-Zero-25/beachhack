@@ -33,10 +33,12 @@ function readBusDetailsFromFile() {
 }
 
 const GOOGLE_MAPS_API_KEY = process.env.GMAPS_API_KEY;
-const BUS_API_URL = "https://busapi.amithv.xyz/api/v1/schedules";
+const BUS_API_URL = process.env.BUS_API_URL;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"; // Updated URL
-const PORT = process.env.CHATBOT_PORT || 5000;
+const PORT = process.env.PORT || 4000;
+const ROME_2_RIO_API_KEY = process.env.ROME_2_RIO_API_KEY;
+const ROME_2_RIO_API_URL = process.env.ROME_2_RIO_API_URL;
 
 
 // Chatbot function
@@ -164,6 +166,35 @@ app.get("/get-bus-route", async (req, res) => {
         console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
     }
+});
+
+async function getTravelModes(src, dest) {
+    if (!src || !dest) {
+        return null;
+    }
+
+    const params = {
+        key: ROME_2_RIO_API_KEY,
+        oName: src,
+        dName: dest,
+        languageCode: "en",
+        currencyCode: "INR"
+    };
+
+    const response = await axios.get(ROME_2_RIO_API_URL, { params });
+    const data = response.data;
+
+    return data;
+}
+
+app.get('/travel', async (req, res) => {
+    const { source, destination } = req.query;
+    const travelModes = await getTravelModes(source, destination);
+    if (travelModes === null) {
+        return res.status(400).json({ error: "Source and destination are required" });
+    }
+
+    res.json(travelModes);
 });
 
 // const PORT = process.env.PORT || 5000;
